@@ -1,0 +1,91 @@
+﻿<Page x:Class="DigitalJournal.Spravochniki"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      Title="Spravochniki">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Причины отказа" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Способы обращения" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="Статус" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="6" Text="Услуга" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="8" Text="Начало услуги" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="10" Text="Способ направления МВЗ" Margin="5,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="12" Text="Виды запросов" Margin="5,0" VerticalAlignment="Center"/>
+
+
+        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="PrichinyOtkazaGrid" Loaded="Prichiny_Otkaza_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=PrichinaId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Причина" Binding="{Binding Path=Prichina, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="2" x:Name="SposobyObrashcheniyaGrid" Loaded="Sposoby_Obrashcheniya_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=SposobObrId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Способы обращения" Binding="{Binding Path=SposobObr, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="4" x:Name="StatusGrid" Loaded="Status_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=StatusId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="6" x:Name="UslugiGrid" Loaded="Uslugi_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=UslugaId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding Path=Usluga, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridComboBoxColumn x:Name="Nachalo" Header="Начало" SelectedValueBinding ="{Binding Path=NachcloUslugi, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Key" DisplayMemberPath="Value"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="8" x:Name="NachaloUslugiGrid" Loaded="Nachalo_Uslugi_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=NachaloId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Начало" Binding="{Binding Path=Nachalo, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="10" x:Name="SposobNapravleniyaMvzGrid" Loaded="Sposob_Napravleniya_MVZ_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=SposobNaprId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Способ направления МВЗ" Binding="{Binding Path=SposobNapr, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1" Grid.Column="12" x:Name="VidyZaprosovGrid" Loaded="Vidy_Zaprosov_Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=VidZaprosaId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Вид запроса" Binding="{Binding Path=VidZaprosa, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

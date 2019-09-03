@@ -1,0 +1,20 @@
+﻿<Page x:Class="DigitalJournal.Deti"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DigitalJournal"
+      mc:Ignorable="d" 
+      Title="Deti">
+
+    <Grid>
+        <DataGrid x:Name="grid" Loaded="Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=DetiId}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ФИО ребенка" Binding="{Binding Path=DetiFio, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Path=DetiDataRozhdeniya, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="ФИО родителя" Binding="{Binding Path=JournalFioZayav}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,66 @@
+﻿<Page x:Name="page" x:Class="DigitalJournal.Journal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DigitalJournal"
+      mc:Ignorable="d" 
+      Title="Journal" MinHeight="250">
+
+    <Grid Width="{Binding ActualWidth, ElementName=page}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25" MaxHeight="25" MinHeight="25"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="75" MinWidth="75"/>
+            <ColumnDefinition MaxWidth="75" MinWidth="75"/>
+            <ColumnDefinition MaxWidth="75" MinWidth="75"/>
+            <ColumnDefinition MaxWidth="50" MinWidth="50"/>
+            <ColumnDefinition MaxWidth="120" MinWidth="120"/>
+            <ColumnDefinition MaxWidth="75" MinWidth="75"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.ColumnSpan="7" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="{Binding ActualWidth, ElementName=page}">
+            <DataGrid x:Name="grid" Loaded="Grid_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding Path=JournalId}"/>
+                    <DataGridTextColumn Header="Дата обращения (дата заявления)" Binding="{Binding Path=JournalDataObrashcheniya, StringFormat={}{0:dd:MM:yyyy}}"/>
+                    <DataGridTextColumn Header="Дата поступления документов из МФЦ (на бумаге)" Binding="{Binding Path=JournalDataPostupleniyaDokumentov}"/>
+                    <DataGridTextColumn Header="Способ обращения" Binding="{Binding Path=SposobyObrashcheniyaSposoby}"/>
+                    <DataGridTextColumn Header="Дата регистрации" Binding="{Binding Path=JournalDataRegistracii}"/>
+                    <DataGridTextColumn Header="ФИО заявителя" Binding="{Binding Path=JournalFioZayavitelya}"/>
+                    <DataGridTextColumn Header="Адрес заявителя" Binding="{Binding Path=JournalAdresZayavitelya}"/>
+                    <DataGridTextColumn Header="Услуга" Binding="{Binding Path=UslugiUslugi}"/>
+                    <DataGridTextColumn Header="ФИО ребенка" Binding="{Binding Path=DetiJoinDetiFio}"/>
+                    <DataGridTextColumn Header="Дата рождения ребенка" Binding="{Binding Path=DetiJoinDetiDate}"/>
+                    <DataGridTextColumn Header="Дата направления МВЗ" Binding="{Binding Path=JournalDataNapravleniyaMvz}"/>
+                    <DataGridTextColumn Header="Способ направления МВЗ" Binding="{Binding Path=SposobNapravleniyaMvzSposoby}"/>
+                    <DataGridTextColumn Header="Дата уведомления о приостановлении рассмотрения обращения" Binding="{Binding Path=JournalDataUvedomleniyaOPriostanovlenii}"/>
+                    <DataGridTextColumn Header="Виды запросов" Binding="{Binding Path=ZaprosyJoinVidZaprosa}"/>
+                    <DataGridTextColumn Header="Дата поступления ответа на МВЗ" Binding="{Binding Path=ZaprosiJoinZaprosDate}"/>
+                    <DataGridTextColumn Header="Результат принятого решения" Binding="{Binding Path=StatusStatus}"/>
+                    <DataGridTextColumn Header="Дата принятия решения" Binding="{Binding Path=JournalDataPrinyatiyaResheniya}"/>
+                    <DataGridTextColumn Header="Дата начала услуги" Binding="{Binding Path=JournalDataNachala}"/>
+                    <DataGridTextColumn Header="Дата окончания услуги" Binding="{Binding Path=JournalDataOkonchaniya}"/>
+                    <DataGridTextColumn Header="№ дела" Binding="{Binding Path=JournalNDela}"/>
+                    <DataGridTextColumn Header="Причины отказа" Binding="{Binding Path=PrichinyOtkazaPrichina}"/>
+                    <DataGridTextColumn Header="Дата направления результата госуслуги" Binding="{Binding Path=JournalDataNapravleniyaRezultata}"/>
+                    <DataGridTextColumn Header="Специалист" Binding="{Binding Path=SpecialistFio}"/>
+            </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <Button Content="Drop" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Drop_Click" Grid.Row="1"
+                    Grid.Column="0" Height="20" Margin="0,5,0,0"/>
+        <Button Content="DigitalJournal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Change_Click" Grid.Row="1" Grid.Column="1" Height="20" Margin="0,5,0,0"/>
+        <Button Content="Add" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Add_Click" Grid.Row="1" Grid.Column="2" Height="20" Margin="0,5,0,0"/>
+
+        <TextBlock Text="ФИО:" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0"/>
+        <TextBox Grid.Row="1" Grid.Column="4" Margin="0,5,0,0" HorizontalContentAlignment="Stretch" x:Name="FilterTextBox"/>
+        <Button Content="Filter" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Height="18" Grid.Row="1" Grid.Column="5" Click="Filter_Click" Margin="0,5,0,0"/>
+    </Grid>
+    
+</Page>
